@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container">
+        <table class="table table-bordered text-center mt-5">
+            <thead class="bg-primary text-light">
+                <tr>
+                    <td>ID</td>
+                    <td>N°Familiar</td>
+                    <td>NombreYApellido</td>
+                    <td>FechaNacimiento</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for familiar in familiares %}
+                    <tr>
+                        <td>{{familiar.ID}}</td>
+                        <td>{{familiar.numeroDeFamiliar}}</td>
+                        <td>{{familiar.nombreYapellido}}</td>
+                        <td>{{familiar.fechaNacimiento}}</td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+        </table> 
+
+        <form action="{% url 'create_familiar' %}" method="POST" class="form-group mt-5 col-6">
+            {% csrf_token %}
+            <h2 class="text-center">Crear Familiar</h2>
+            <input type="text" name="numeroDeFamiliar" class="form-control mb-2" placeholder="ingrese el Numero de Familiar">
+            <input type="text" name="nombreYapellido" class="form-control mb-2"placeholder="nombreYapellido">
+            <input type="number" name="fechaNacimiento" class="form-control mb-2"placeholder="fechaNacimiento">
+            <button class="btn btn-success col-12" type="submit">GUARDAR</button>
+        </form>
+
+    </div>
+
+
+    
+</body>
+</html>
